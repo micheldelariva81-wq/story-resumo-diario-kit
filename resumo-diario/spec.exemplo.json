@@ -1,0 +1,95 @@
+{
+ "date": "12/11/2026",
+ "voice": "pm_alex",
+ "speed": 1.05,
+ "scenes": [
+  {
+   "title": "RESUMO DO DIA",
+   "icon": "calendar",
+   "items": [
+    {
+     "say": "Bom dia! Hoje é quinta-feira, doze de novembro. Veja o resumo do mercado.",
+     "sub": "Bom dia! Quinta-feira, 12 de novembro.",
+     "big": "12/11",
+     "show": "quinta-feira, 12 de novembro"
+    }
+   ]
+  },
+  {
+   "title": "MERCADO",
+   "icon": "chart",
+   "items": [
+    {
+     "say": "Ontem, a bolsa subiu zero vírgula quarenta e dois por cento, e o dólar caiu para cinco reais e cinquenta e seis.",
+     "sub": "Ontem: Ibovespa +0,42% e dólar a R$ 5,56.",
+     "big": "+0,42%",
+     "show": "Ibovespa a 172 mil pontos · dólar a R$ 5,56"
+    },
+    {
+     "say": "Lá fora, as ações da Envídia caem forte e pesam sobre as bolsas.",
+     "sub": "Lá fora, Nvidia em queda pesa nas bolsas.",
+     "show": "Nvidia em queda pesa nas bolsas lá fora"
+    }
+   ]
+  },
+  {
+   "title": "INFLAÇÃO",
+   "icon": "tag",
+   "items": [
+    {
+     "say": "A inflação de outubro ficou em zero vírgula catorze por cento, abaixo do esperado.",
+     "sub": "IPCA de outubro: 0,14%, abaixo do esperado.",
+     "big": "0,14%",
+     "show": "IPCA de outubro (IBGE)"
+    },
+    {
+     "say": "Em doze meses, soma quatro vírgula sessenta e três por cento, ainda acima do teto da meta.",
+     "sub": "Em 12 meses: 4,63%, acima do teto da meta (4,5%).",
+     "big": "4,63%",
+     "show": "em 12 meses · teto da meta: 4,5%"
+    }
+   ]
+  },
+  {
+   "title": "OURO",
+   "icon": "gold",
+   "items": [
+    {
+     "say": "O ouro caiu pelo terceiro dia seguido e está abaixo de quatro mil dólares.",
+     "sub": "Ouro abaixo de US$ 4.000: terceira queda seguida.",
+     "big": "< US$ 4.000",
+     "show": "ouro em queda pelo 3º dia seguido"
+    }
+   ]
+  },
+  {
+   "title": "ECONOMIA",
+   "icon": "globe",
+   "items": [
+    {
+     "say": "O governo propôs um ajuste fiscal de cinquenta a sessenta bilhões de reais. O Senado pode votar hoje.",
+     "sub": "Ajuste fiscal de R$ 50 a 60 bi para 2027: Senado pode votar hoje.",
+     "big": "R$ 50 a 60 bi",
+     "show": "ajuste fiscal estimado pelo governo para 2027"
+    },
+    {
+     "say": "E para o seu bolso? Inflação mais fraca tende a aliviar a pressão sobre os juros.",
+     "sub": "E para o seu bolso? Menos pressão sobre os juros.",
+     "show": "para o seu bolso: menos pressão sobre os juros",
+     "turn": true
+    }
+   ]
+  },
+  {
+   "title": "ATÉ AMANHÃ",
+   "icon": "star",
+   "items": [
+    {
+     "say": "Me segue para acompanhar tudo isso. Até amanhã!",
+     "sub": "Me segue para acompanhar tudo isso!",
+     "show": "@michel_ebertz_investsmart"
+    }
+   ]
+  }
+ ]
+}
