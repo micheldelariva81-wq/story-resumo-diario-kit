@@ -56,6 +56,7 @@ A conferência ignora números na comparação (o transcritor escreve "0,42%" e 
 - `engine/wb.js`: motor do quadro branco da lemo-opuscar adaptado para vertical (`?vp=1080x1920`) e com a cedilha desenhada.
 - `prep.py`: gera as falas, a linha do tempo e o áudio (só narração, sem trilha).
 - `confere_audio.py`: conferência por transcrição (faster-whisper).
+- `capa_feed.py`: capa do Reel para o feed do Instagram. Gera 1080x1920 com tudo dentro do recorte central de 1080x1350 (o que o feed mostra) e salva junto as prévias dos dois recortes que o Instagram aplica: 4:5 no feed e 3:4 na grade do perfil. A capa que o `build.sh` tira do vídeo serve para story; para o feed, use esta.
 - `fonts/`: EMS Tech (traço único) e Architects Daughter, ambas sob a SIL Open Font License.
 
 A foto não fica no repositório: é gravada como `foto.jpg` na hora de gerar.
