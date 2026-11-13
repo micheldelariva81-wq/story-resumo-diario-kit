@@ -32,4 +32,5 @@ subs = [{'t0': scenes[si]['items'][ii]['t0'], 't1': round(scenes[si]['items'][ii
 json.dump(subs, open(J('out', 'subs.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 words = sum(len(spec['scenes'][si]['items'][ii]['say'].split()) for si, ii, i in ids)
 print('DURACAO_S', total, '| palavras', words, '| capa em t =', round(scenes[1]['t0'] - .8, 2) if len(scenes) > 1 else 1)
-if total > 59.0: print('LONGO_DEMAIS: encurte o roteiro e rode de novo'); sys.exit(2)
+LIM = float(spec.get('max_s', 59.0))   # story: 59 s; reel: pode ser maior
+if total > LIM: print(f'LONGO_DEMAIS ({total}s > {LIM}s): encurte o roteiro e rode de novo'); sys.exit(2)

@@ -26,15 +26,22 @@ cp -r ~/kit/resumo-diario ~/lemo-opuscar/films/
 sh ~/lemo-opuscar/films/resumo-diario/build.sh
 ```
 
-Saída em `films/resumo-diario/out/`: `story_do_dia.mp4`, `story_do_dia.srt`, `capa.jpg`, `transcricao.json`.
+Saída em `films/<pasta>/out/`: `video.mp4`, `video.srt`, `capa.jpg`, `transcricao.json`.
+
+O `build.sh` usa o nome da própria pasta, então dá para ter vários filmes lado a lado (`films/resumo-diario`, `films/reel-confisco`, ...) com o mesmo kit.
 
 ## spec.json
 
 - `date`: "DD/MM/AAAA". Define o sorteio de paleta (classico, marinho, verde, grafite), layout (esquerda, centro, cartoes) e rota da câmera (zigzag, coluna, linha). Para fixar: `"palette"`, `"layout"`, `"route"`.
 - `voice` (padrão `pm_alex`) e `speed` (padrão 1.0).
-- `scenes`: 6 cenas (RESUMO DO DIA, MERCADO, INFLAÇÃO, OURO, ECONOMIA, ATÉ AMANHÃ), cada uma com `title`, `icon` (calendar, chart, tag, gold, globe, star) e `items`.
+- `max_s`: duração máxima em segundos (padrão 59, para story; num Reel dá para usar mais).
+- `cta`: chapa final de tela cheia, com `title` (lista de linhas), `lines` (lista), `badge` (selo, ex.: "LINK NA BIO") e `handle`. Quando existe, a última cena vira essa chapa: o cabeçalho e a legenda saem e ela desenha a foto no arco, o nome e a chamada. Ver `spec.reel-exemplo.json`.
+- `scenes`: no story são 6 cenas (RESUMO DO DIA, MERCADO, INFLAÇÃO, OURO, ECONOMIA, ATÉ AMANHÃ); num Reel o número é livre. Cada uma com `title`, `icon` (calendar, chart, tag, gold, globe, star) e `items`.
 - Cada item: `say` (fala, números por extenso), `sub` (legenda, com algarismos), `big` (número em destaque, opcional), `show` (rótulo), `turn: true` (frase "para o seu bolso": pausa antes e traço de destaque).
+- `asr`: opcional, o texto como o transcritor deve ouvir. Serve para falas com grafia fonética (ver abaixo).
 - Até 2 itens por cena; `show` com até cerca de 50 caracteres.
+
+**Siglas na fala:** a voz lê sigla escrita por extenso errado ("IOF" sai como "GOF"). No campo `say` escreva a sigla foneticamente ("i-ó-éfe") e ponha a forma normal em `asr`, `sub` e `show`.
 
 ## Códigos de saída do build.sh
 

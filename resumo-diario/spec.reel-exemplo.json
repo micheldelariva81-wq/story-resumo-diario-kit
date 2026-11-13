@@ -1,0 +1,75 @@
+{
+ "date": "13/11/2026",
+ "voice": "pm_alex",
+ "speed": 1.05,
+ "max_s": 115,
+ "cta": {
+  "title": ["DIAGNÓSTICO", "FINANCEIRO"],
+  "lines": ["Descubra onde o seu dinheiro", "está exposto a isso."],
+  "badge": "LINK NA BIO",
+  "handle": "@michel_ebertz_investsmart"
+ },
+ "scenes": [
+  {"title": "MARÇO DE 1990", "icon": "calendar", "items": [
+   {"say": "Em março de mil novecentos e noventa, os preços subiram oitenta e dois por cento em um único mês.",
+    "sub": "Março de 1990: os preços sobem 82,39% em um mês.",
+    "big": "82,39%",
+    "show": "maior inflação mensal já medida (IBGE)"},
+   {"say": "O governo travou o dinheiro nos bancos. O saque ficou limitado a cinquenta mil cruzados novos e o resto passou dezoito meses preso.",
+    "sub": "Saque limitado a 50 mil cruzados novos; o resto, 18 meses preso.",
+    "show": "cerca de 80% dos depósitos bloqueados"}
+  ]},
+  {"title": "PODE REPETIR?", "icon": "star", "items": [
+   {"say": "Daquele jeito, não. Desde dois mil e um, a Constituição proíbe medida provisória que segure poupança ou aplicação.",
+    "sub": "Daquele jeito, não: a Constituição proíbe desde 2001.",
+    "show": "Constituição, art. 62 · EC 32/2001"}
+  ]},
+  {"title": "MAS TEM UMA CONTA", "icon": "chart", "items": [
+   {"say": "A dívida do governo está em oitenta e dois vírgula nove por cento de tudo que o país produz em um ano. E conta grande se paga por caminhos mais silenciosos.",
+    "sub": "Dívida bruta em 82,9% do PIB (Banco Central, setembro).",
+    "big": "82,9%",
+    "show": "dívida bruta sobre o PIB"}
+  ]},
+  {"title": "1. A INFLAÇÃO", "icon": "tag", "items": [
+   {"say": "No ritmo de hoje, o dinheiro parado perde metade do poder de compra em cerca de quinze anos. Você ganha o mesmo e vive um pouco pior a cada ano.",
+    "sub": "Com o IPCA em 4,63% ao ano, o dinheiro parado perde metade do poder de compra em ~15 anos.",
+    "big": "15 anos",
+    "show": "para perder metade do poder de compra"}
+  ]},
+  {"title": "2. O CÂMBIO", "icon": "globe", "items": [
+   {"say": "Dúvida sobre as contas públicas derruba o real e levanta o dólar. E dólar alto reaparece no combustível, no remédio e no mercado.",
+    "sub": "Dúvida fiscal derruba o real; o dólar alto volta no preço final.",
+    "show": "combustível · remédio · supermercado"}
+  ]},
+  {"title": "3. A PORTA", "icon": "gold", "items": [
+   {"say": "A terceira quase ninguém comenta: dificultar a saída do dinheiro do país. Chama-se controle de capitais.",
+    "sub": "A terceira: controle de capitais.",
+    "show": "dificultar a saída de dinheiro do país"},
+   {"say": "A Argentina fez isso em dois mil e dezenove. O limite de compra de dólar caiu de dez mil para duzentos por mês.",
+    "sub": "Argentina, 2019: limite de compra de dólar cai de US$ 10 mil para US$ 200 por mês.",
+    "big": "US$ 200",
+    "show": "por pessoa, por mês · Banco Central argentino"}
+  ]},
+  {"title": "AQUI JÁ EXISTE", "icon": "tag", "items": [
+   {"say": "No Brasil, o governo mexe no i-ó-éfe por decreto, sem passar pelo Congresso, e vale na hora.",
+    "asr": "No Brasil, o governo mexe no IOF por decreto, sem passar pelo Congresso, e vale na hora.",
+    "sub": "O governo mexe no IOF por decreto e vale na hora.",
+    "show": "Constituição, art. 153"},
+   {"say": "A lei permite até vinte e cinco por cento no câmbio. Em dois mil e vinte e cinco o governo subiu, o Congresso derrubou e o Supremo recolocou quase tudo.",
+    "sub": "Teto legal: 25% no câmbio. Em 2025 subiu, caiu e voltou.",
+    "big": "até 25%",
+    "show": "teto no câmbio · Lei 8.894/1994"}
+  ]},
+  {"title": "E O SEU BOLSO?", "icon": "star", "items": [
+   {"say": "Boa parte do que você consome já tem preço ligado ao dólar. Proteção se estuda com calma, antes, e não no dia do susto.",
+    "sub": "Proteção se estuda antes, não no dia do susto.",
+    "show": "planejar antes vale mais que reagir depois",
+    "turn": true}
+  ]},
+  {"title": "DIAGNÓSTICO", "icon": "star", "items": [
+   {"say": "Quer saber onde o seu dinheiro está exposto a isso? Faça o diagnóstico financeiro gratuito. O link está na bio.",
+    "sub": "Diagnóstico financeiro gratuito: link na bio.",
+    "show": "@michel_ebertz_investsmart"}
+  ]}
+ ]
+}

@@ -46,6 +46,9 @@ export async function build() {
   console.log('variação', palName, layout, route);
   const centered = layout === 'centro', cards = layout === 'cartoes';
 
+  const cta = spec.cta || null;                       // chapa final: { title, lines[], badge, handle }
+  const ctaT0 = cta ? TL.scenes[TL.scenes.length - 1].t0 - .35 : Infinity;
+
   const tl = new W.Timeline();
   const K = new W.Pen('k', pal.k, { park: [VW + 260, VH + 260], len: 300 }), B = new W.Pen('bb', pal.b, { park: [VW + 330, VH - 240], len: 300 }), O = new W.Pen('ooo', pal.o, { park: [-260, VH + 300], len: 300 });
   const n = spec.scenes.length, M = 400;
@@ -94,7 +97,8 @@ export async function build() {
 
   // cabeçalho fixo (tela): foto no arco, nome e cargo
   board.overlays.push({
-    draw: ctx => {
+    draw: (ctx, t) => {
+      if (t >= ctaT0) return;                          // a chapa final desenha o seu próprio cabeçalho
       const x = 70, y = 62, w = 176, h = 224, r = w / 2;
       const arch = () => { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + r); ctx.arc(x + r, y + r, r, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); };
       ctx.save(); ctx.shadowColor = 'rgba(30,30,40,.22)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 5; ctx.fillStyle = '#fdfcf8'; arch(); ctx.fill(); ctx.restore();
@@ -117,6 +121,7 @@ export async function build() {
   for (let i = 0; i < subs.length - 1; i++) subs[i].t1 = Math.min(subs[i].t1, subs[i + 1].t0 - .04);
   if (!Q.has('nosubs')) board.overlays.push({
     draw: (ctx, t) => {
+      if (t >= ctaT0) return;
       const s = subs.find(s => t >= s.t0 && t < s.t1); if (!s) return;
       const a = Math.min(1, (t - s.t0) / .12, (s.t1 - t) / .12);
       ctx.font = '45px AD';
@@ -130,6 +135,45 @@ export async function build() {
       ctx.fillStyle = pal.o; ctx.fillRect(VW / 2 - w / 2 + 22, y0 + h - 12, 36, 4);
       ctx.fillStyle = '#23262c'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       rows.forEach((r, i) => ctx.fillText(r, VW / 2, y0 + 38 + i * 54));
+    }
+  });
+
+  // chapa final: cartão de tela cheia com a marca e a chamada do diagnóstico
+  if (cta) board.overlays.push({
+    draw: (ctx, t) => {
+      if (t < ctaT0) return;
+      const a = Math.min(1, (t - ctaT0) / .5);
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.fillStyle = '#f2efe8'; ctx.fillRect(0, 0, VW, VH);
+      ctx.strokeStyle = pal.o; ctx.lineWidth = 7; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.roundRect(54, 140, VW - 108, 1320, 44); ctx.stroke();
+      // foto no arco, centralizada
+      const w = 196, h = 250, x = VW / 2 - w / 2, y = 232, r = w / 2;
+      const arch = () => { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + r); ctx.arc(x + r, y + r, r, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); };
+      ctx.save(); ctx.shadowColor = 'rgba(30,30,40,.22)'; ctx.shadowBlur = 18; ctx.shadowOffsetY = 6; ctx.fillStyle = '#fdfcf8'; arch(); ctx.fill(); ctx.restore();
+      ctx.save(); arch(); ctx.clip();
+      if (img.naturalWidth) { const k = Math.max(w / img.naturalWidth, h / img.naturalHeight), iw = img.naturalWidth * k, ih = img.naturalHeight * k; ctx.imageSmoothingQuality = 'high'; ctx.drawImage(img, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih); }
+      ctx.restore();
+      ctx.lineWidth = 7; ctx.strokeStyle = ACCENT; arch(); ctx.stroke();
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#23262c'; ctx.font = '56px AD'; ctx.fillText('Michel Ebertz', VW / 2, 564);
+      ctx.fillStyle = '#5b6068'; ctx.font = '33px AD'; ctx.fillText('Assessor de Investimentos', VW / 2, 616);
+      ctx.fillStyle = ACCENT; ctx.fillRect(VW / 2 - 70, 650, 140, 6);
+      // chamada
+      const fit = (txt, size, max) => { ctx.font = size + 'px AD'; while (ctx.measureText(txt).width > max && size > 24) { size -= 2; ctx.font = size + 'px AD'; } return size; };
+      ctx.fillStyle = '#23262c';
+      (cta.title || []).forEach((l, i) => { fit(l, 82, 860); ctx.fillText(l, VW / 2, 790 + i * 92); });
+      ctx.fillStyle = '#4a4f57';
+      (cta.lines || []).forEach((l, i) => { fit(l, 42, 840); ctx.fillText(l, VW / 2, 1010 + i * 60); });
+      // selo da chamada
+      if (cta.badge) {
+        const sz = fit(cta.badge, 44, 700), bw = ctx.measureText(cta.badge).width + 92;
+        ctx.fillStyle = pal.o; ctx.beginPath(); ctx.roundRect(VW / 2 - bw / 2, 1160, bw, 96, 48); ctx.fill();
+        ctx.fillStyle = '#fdfcf8'; ctx.font = sz + 'px AD'; ctx.fillText(cta.badge, VW / 2, 1222);
+      }
+      if (cta.handle) { ctx.fillStyle = '#5b6068'; ctx.font = '38px AD'; ctx.fillText(cta.handle, VW / 2, 1362); }
+      ctx.fillStyle = '#6b7078'; ctx.font = '25px AD'; ctx.fillText('conteúdo educativo · não é recomendação de investimento', VW / 2, 1526);
+      ctx.restore();
     }
   });
 
